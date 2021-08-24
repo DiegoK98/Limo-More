@@ -97,6 +97,7 @@ public class ExtensionControl : MonoBehaviour
 
         if (countdownCounter > maxTimeStuck)
         {
+            Debug.Log("STUCK!");
             GameManager.Instance.gameOver = true;
         }
     }
