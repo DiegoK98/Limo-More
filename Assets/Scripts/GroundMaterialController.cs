@@ -20,7 +20,8 @@ public class GroundMaterialController : MonoBehaviour
         if (hit.collider is null)
             return;
 
-        type = hit.collider.GetComponent<GroundMaterial>();
+        if (!hit.collider.TryGetComponent<GroundMaterial>(out type))
+            return;
 
         SetStiffness(wheelCollider, type.stiffness);
     }
