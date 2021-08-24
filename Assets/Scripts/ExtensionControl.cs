@@ -52,10 +52,8 @@ public class ExtensionControl : MonoBehaviour
         carBounds.size = newCarSize;
 
         // Reposition axles
-        Vector3 localBoundsCenter = transform.InverseTransformPoint(carBounds.bounds.center);
-
-        Vector3 localFrontAxlePos = new Vector3(localBoundsCenter.x, localBoundsCenter.y - 0.75f, 0.5f * carBounds.size.z - 1);
-        Vector3 localRearAxlePos = new Vector3(localBoundsCenter.x, localBoundsCenter.y - 0.75f, 1 - 0.5f * carBounds.size.z);
+        Vector3 localFrontAxlePos = new Vector3(0, 0, 0.5f * carBounds.size.z - 0.84f);
+        Vector3 localRearAxlePos = new Vector3(0, 0, 0.95f - (0.5f * carBounds.size.z));
 
         frontAxle.localPosition = localFrontAxlePos;
         rearAxle.localPosition = localRearAxlePos;
