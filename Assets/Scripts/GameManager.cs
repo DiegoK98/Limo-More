@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (gameOver)
+        {
             Time.timeScale = 0;
+            Debug.Log("GAME OVER!");
+        }
     }
 }

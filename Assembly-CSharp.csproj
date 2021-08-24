@@ -54,12 +54,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GroundMaterialController.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ExtensionControl.cs" />
     <Compile Include="Assets\Scripts\GroundMaterial.cs" />
-    <Compile Include="Assets\Scripts\AxlesRepositioning.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\Scripts\StuckTrigger.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\WindowTint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

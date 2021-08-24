@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ExtensionControl : MonoBehaviour
 {
-    [SerializeField] private float extensionRate;
+    [SerializeField] private float extensionRate = 0.1f;
+    [SerializeField] private float patternGap = 0.77f;
+    [SerializeField] private GameObject patternPrefab;
+    [SerializeField] private Transform patternOrigin;
+
+    private Vector3 patternSpawnPoint;
 
     [Header("Body")]
 
@@ -23,6 +29,7 @@ public class ExtensionControl : MonoBehaviour
     private BoxCollider carBounds;
 
     private Vector3 originalCarSize;
+    private float savedCarLength;
 
     private float countdownCounter;
 
@@ -36,6 +43,8 @@ public class ExtensionControl : MonoBehaviour
     {
         carBounds = GetComponent<BoxCollider>();
         originalCarSize = carBounds.size;
+
+        patternSpawnPoint = patternOrigin.localPosition;
     }
 
     // Update is called once per frame
@@ -44,12 +53,19 @@ public class ExtensionControl : MonoBehaviour
         if (GameManager.Instance.gameOver)
             return;
 
-        // Expand the collider
+        // Expand the car
         bodyGFX.localScale += new Vector3(0, 0, extensionRate * 0.01f);
 
         Vector3 newCarSize = originalCarSize;
         newCarSize.z *= bodyGFX.localScale.z;
         carBounds.size = newCarSize;
+
+        // Repeating pattern every 0.77
+        if(carBounds.size.z - savedCarLength >= patternGap)
+        {
+            savedCarLength = carBounds.size.z;
+            RepeatPattern();
+        }
 
         // Reposition axles
         Vector3 localFrontAxlePos = new Vector3(0, 0, 0.5f * carBounds.size.z - 0.84f);
@@ -63,8 +79,16 @@ public class ExtensionControl : MonoBehaviour
             Countdown();
         else
             countdownCounter = 0;
+    }
 
-        Debug.Log(countdownCounter);
+    private void RepeatPattern()
+    {
+        Vector3 newSpawnPos = patternSpawnPoint;
+        newSpawnPos.z += patternGap;
+        patternSpawnPoint = newSpawnPos;
+
+        GameObject go = Instantiate(patternPrefab, patternOrigin.parent, false);
+        go.transform.localPosition = patternSpawnPoint;
     }
 
     private void Countdown()
@@ -74,7 +98,6 @@ public class ExtensionControl : MonoBehaviour
         if (countdownCounter > maxTimeStuck)
         {
             GameManager.Instance.gameOver = true;
-            Debug.Log("GAME OVER!");
         }
     }
 }
