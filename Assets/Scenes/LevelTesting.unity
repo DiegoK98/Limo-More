@@ -150,8 +150,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64033058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.69, y: 0.14, z: -0.015}
-  m_LocalScale: {x: 0.01, y: 0.3, z: 2}
+  m_LocalPosition: {x: -1.69, y: 0.14, z: -0.015}
+  m_LocalScale: {x: 0.01, y: 0.3, z: 4}
   m_Children: []
   m_Father: {fileID: 1205065208}
   m_RootOrder: 3
@@ -561,8 +561,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573798615}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.305, y: 0.14, z: 0.981}
-  m_LocalScale: {x: 0.01, y: 0.3, z: 2}
+  m_LocalPosition: {x: 0.305, y: 0.14, z: 1.981}
+  m_LocalScale: {x: 0.01, y: 0.3, z: 4}
   m_Children: []
   m_Father: {fileID: 1205065208}
   m_RootOrder: 5
@@ -1010,8 +1010,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663229009}
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: 0.309, y: 0.14, z: -1.01}
-  m_LocalScale: {x: 0.01, y: 0.3, z: 2}
+  m_LocalPosition: {x: 0.309, y: 0.14, z: -2.01}
+  m_LocalScale: {x: 0.01, y: 0.3, z: 4}
   m_Children: []
   m_Father: {fileID: 1205065208}
   m_RootOrder: 4
@@ -1353,8 +1353,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058701358}
   m_LocalRotation: {x: -0, y: -0.00000038743013, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3039999, y: 0.14, z: -0.014000014}
-  m_LocalScale: {x: 0.01, y: 0.3, z: 2}
+  m_LocalPosition: {x: 2.304, y: 0.14, z: -0.014000014}
+  m_LocalScale: {x: 0.01, y: 0.3, z: 4}
   m_Children: []
   m_Father: {fileID: 1205065208}
   m_RootOrder: 6
@@ -1712,6 +1712,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4511641172444805434, guid: fcb22863e2061714794bf46618be6893, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511641173888289612, guid: fcb22863e2061714794bf46618be6893, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6894057869560111598, guid: fcb22863e2061714794bf46618be6893, type: 3}
       propertyPath: m_Name
       value: LongCar
@@ -1759,6 +1767,14 @@ PrefabInstance:
     - target: {fileID: 6894057869560111599, guid: fcb22863e2061714794bf46618be6893, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894832645268111626, guid: fcb22863e2061714794bf46618be6893, type: 3}
+      propertyPath: m_Name
+      value: ExtendableParts
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437737946410764159, guid: fcb22863e2061714794bf46618be6893, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb22863e2061714794bf46618be6893, type: 3}
