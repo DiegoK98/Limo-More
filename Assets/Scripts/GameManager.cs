@@ -172,8 +172,12 @@ public class GameManager : MonoBehaviour
 
     private void NextLevel()
     {
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextScene >= SceneManager.sceneCount)
+            return;
+
         Time.timeScale = 1;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(nextScene);
     }
 }
