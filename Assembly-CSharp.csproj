@@ -57,13 +57,13 @@
     <Compile Include="Assets\Scripts\WindowTint.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ExtensionControl.cs" />
+    <Compile Include="Assets\Scripts\BirdViewSceneController.cs" />
+    <Compile Include="Assets\Scripts\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\GroundMaterial.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\Scripts\CoinBehaviour.cs" />
-    <Compile Include="Assets\Scripts\StuckTrigger.cs" />
-    <Compile Include="Assets\Scripts\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\CoinArrow.cs" />
-    <Compile Include="Assets\Scripts\BirdViewSceneController.cs" />
+    <Compile Include="Assets\Scripts\StuckTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -3,9 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Text textAsset;
+
+    [SerializeField] private Slider holdRSlider;
+
+    [SerializeField] private Text holdRText;
+
+    [SerializeField] private Text gameOverText;
+
     [HideInInspector] public bool gameOver;
 
     private bool timeScaledecreasing;
@@ -13,6 +22,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private int currentPoints;
+
+    [SerializeField] private bool coinsEnabled = true;
+
+    [Header("Coins")]
 
     [SerializeField] private List<CoinBehaviour> coins;
 
@@ -26,6 +39,10 @@ public class GameManager : MonoBehaviour
 
     private bool alreadyReloaded;
 
+    private float startTime;
+
+    private bool won;
+
     private void Awake()
     {
         Instance = this;
@@ -35,6 +52,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentPoints = 0;
+
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -46,21 +65,56 @@ public class GameManager : MonoBehaviour
         if (timeScaledecreasing)
             Time.timeScale -= Time.deltaTime;
 
+        if (!coinsEnabled)
+            return;
+
+        if (Time.timeScale <= 0.1f)
+            if (won)
+            {
+                ShowText("[SPACE] to continue", true);
+
+                if (Input.GetKey(KeyCode.Space))
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                ShowText("[SPACE] to restart", true);
+
+                if (Input.GetKey(KeyCode.Space))
+                    ReloadScene();
+            }
+
+        if (gameOver)
+            return;
+
         if (currentPoints >= coins.Count)
         {
-            gameOver = true;
-            Debug.Log("VICTORY!");
+            GameOver(true);
         }
 
         noCoinsTimeCounter += Time.deltaTime;
 
-        if(noCoinsTimeCounter > noCoinsMaxTime)
-            Debug.Log("Hold [R] to restart");
-
-        if (Input.GetKey(KeyCode.R))
-            resetTimeCounter += Time.deltaTime;
+        if (noCoinsTimeCounter > noCoinsMaxTime)
+            ShowText("Hold [R] to restart");
         else
+            ShowText("");
+
+        if (Input.GetKey(KeyCode.R) && Time.time - startTime > 1)
+        {
+            resetTimeCounter += Time.deltaTime;
+
+            holdRSlider.gameObject.SetActive(true);
+            holdRText.enabled = true;
+
+            holdRSlider.value = resetTimeCounter / resetMaxTime;
+        }
+        else
+        {
             resetTimeCounter = 0;
+
+            holdRSlider.gameObject.SetActive(false);
+            holdRText.enabled = false;
+        }
 
         if (resetTimeCounter > resetMaxTime)
             ReloadScene();
@@ -68,6 +122,8 @@ public class GameManager : MonoBehaviour
 
     private void ReloadScene()
     {
+        // Reset properties
+
         if (alreadyReloaded)
             return;
 
@@ -77,7 +133,6 @@ public class GameManager : MonoBehaviour
 
     public void AddPoint()
     {
-        Debug.Log(noCoinsTimeCounter);
         noCoinsTimeCounter = 0;
         currentPoints++;
     }
@@ -85,5 +140,35 @@ public class GameManager : MonoBehaviour
     public void ResetPoints(int pointsToSet = 0)
     {
         currentPoints = pointsToSet;
+    }
+
+    public void ShowText(string text, bool animated = false)
+    {
+        textAsset.text = text;
+
+        textAsset.GetComponentInParent<Animator>().enabled = animated;
+    }
+
+    public void GameOver(bool win = false)
+    {
+        gameOver = true;
+
+        won = win;
+
+        ShowText("");
+
+        if (win)
+        {
+            //canContinueTime = Time.time;
+            gameOverText.text = "NICE!";
+            gameOverText.color = new Color(0, 140, 0);
+        }
+
+        if (!win)
+        {
+            //canContinueTime = Time.time;
+            gameOverText.text = "STUCK!";
+            gameOverText.color = new Color(229, 19, 0);
+        }
     }
 }

@@ -61,7 +61,7 @@ public class ExtensionControl : MonoBehaviour
         carBounds.size = newCarSize;
 
         // Repeating pattern every 0.77
-        if(carBounds.size.z - savedCarLength >= patternGap)
+        if (carBounds.size.z - savedCarLength >= patternGap)
         {
             savedCarLength = carBounds.size.z;
             RepeatPattern();
@@ -97,8 +97,7 @@ public class ExtensionControl : MonoBehaviour
 
         if (countdownCounter > maxTimeStuck)
         {
-            Debug.Log("STUCK!");
-            GameManager.Instance.gameOver = true;
+            GameManager.Instance.GameOver(false);
         }
     }
 }
