@@ -3724,7 +3724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6898498606116825768}
   m_Layer: 0
-  m_Name: Main Body
+  m_Name: ExtendableParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
