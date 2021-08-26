@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     private int currentPoints;
 
-    [SerializeField] private bool coinsEnabled = true;
+    [SerializeField] private bool playableLevel = true;
 
     [Header("Coins")]
 
@@ -65,20 +65,20 @@ public class GameManager : MonoBehaviour
         if (timeScaledecreasing)
             Time.timeScale -= Time.deltaTime;
 
-        if (!coinsEnabled)
+        if (!playableLevel)
             return;
 
         if (Time.timeScale <= 0.1f)
             if (won)
             {
-                ShowText("[SPACE] to continue", true);
+                ShowText("[ESPACIO] PARA CONTINUAR", true);
 
                 if (Input.GetKey(KeyCode.Space))
                     NextLevel();
             }
             else
             {
-                ShowText("[SPACE] to restart", true);
+                ShowText("[ESPACIO] PARA REINICIAR", true);
 
                 if (Input.GetKey(KeyCode.Space))
                     ReloadLevel();
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         noCoinsTimeCounter += Time.deltaTime;
 
         if (noCoinsTimeCounter > noCoinsMaxTime)
-            ShowText("Hold [R] to restart");
+            ShowText("MANTÉN [R] PARA REINICIAR");
         else
             ShowText("");
 
