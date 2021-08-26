@@ -74,14 +74,14 @@ public class GameManager : MonoBehaviour
                 ShowText("[SPACE] to continue", true);
 
                 if (Input.GetKey(KeyCode.Space))
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    NextLevel();
             }
             else
             {
                 ShowText("[SPACE] to restart", true);
 
                 if (Input.GetKey(KeyCode.Space))
-                    ReloadScene();
+                    ReloadLevel();
             }
 
         if (gameOver)
@@ -117,15 +117,15 @@ public class GameManager : MonoBehaviour
         }
 
         if (resetTimeCounter > resetMaxTime)
-            ReloadScene();
+            ReloadLevel();
     }
 
-    private void ReloadScene()
+    private void ReloadLevel()
     {
-        // Reset properties
-
         if (alreadyReloaded)
             return;
+
+        Time.timeScale = 1;
 
         alreadyReloaded = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -159,16 +159,21 @@ public class GameManager : MonoBehaviour
 
         if (win)
         {
-            //canContinueTime = Time.time;
             gameOverText.text = "NICE!";
             gameOverText.color = new Color(0, 140, 0);
         }
 
         if (!win)
         {
-            //canContinueTime = Time.time;
             gameOverText.text = "STUCK!";
             gameOverText.color = new Color(229, 19, 0);
         }
+    }
+
+    private void NextLevel()
+    {
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
