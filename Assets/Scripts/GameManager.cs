@@ -173,7 +173,8 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextScene >= SceneManager.sceneCount)
+
+        if (nextScene >= SceneManager.sceneCountInBuildSettings)
             return;
 
         Time.timeScale = 1;
