@@ -73,14 +73,14 @@ public class GameManager : MonoBehaviour
             {
                 ShowText("[ESPACIO] PARA CONTINUAR", true);
 
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space))
                     NextLevel();
             }
             else
             {
                 ShowText("[ESPACIO] PARA REINICIAR", true);
 
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space))
                     ReloadLevel();
             }
 

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2E7F7153-A886-3126-260D-006BF515E84C}</ProjectGuid>
+    <ProjectGuid>{EC4D8935-570B-D95D-BF8E-1170EF6AA8E5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -61,12 +61,12 @@
     <Compile Include="Assets\Scripts\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\GroundMaterial.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
+    <Compile Include="Assets\Scripts\DeathPit.cs" />
     <Compile Include="Assets\Scripts\MenuCarsControl.cs" />
     <Compile Include="Assets\Scripts\CoinBehaviour.cs" />
     <Compile Include="Assets\Scripts\FloorSwiping.cs" />
     <Compile Include="Assets\Scripts\CoinArrow.cs" />
     <Compile Include="Assets\Scripts\StuckTrigger.cs" />
-    <Compile Include="Assets\DeathPit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
