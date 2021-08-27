@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
             ReloadLevel();
     }
 
-    private void ReloadLevel()
+    public void ReloadLevel()
     {
         if (alreadyReloaded)
             return;
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void NextLevel()
+    public void NextLevel()
     {
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextScene >= SceneManager.sceneCount)
