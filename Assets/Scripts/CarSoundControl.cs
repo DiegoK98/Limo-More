@@ -17,6 +17,9 @@ public class CarSoundControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        engineSound.pitch = carControl.currentAcceleration;
+        engineSound.pitch = carControl.currentAcceleration * Mathf.Sqrt(Time.timeScale);
+
+        if (Time.timeScale < 0.1f)
+            engineSound.Stop();
     }
 }
