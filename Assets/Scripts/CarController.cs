@@ -38,7 +38,7 @@ public class CarController : MonoBehaviour
 
     private float currentBrakeForce;
 
-    private float currentAcceleration;
+    [HideInInspector] public float currentAcceleration;
 
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
@@ -79,7 +79,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
-            currentAcceleration -= 0.03f;
+            currentAcceleration -= 0.3f;
         }
 
         if (currentAcceleration < 0)
@@ -93,6 +93,8 @@ public class CarController : MonoBehaviour
     {
         FrontLeftWheelCollider.motorTorque = inputVertical * motorForce * currentAcceleration;
         FrontRightWheelCollider.motorTorque = inputVertical * motorForce * currentAcceleration;
+        RearLeftWheelCollider.motorTorque = inputVertical * motorForce * currentAcceleration;
+        RearRightWheelCollider.motorTorque = inputVertical * motorForce * currentAcceleration;
         currentBrakeForce = isBraking ? brakeForce : 0f;
         ApplyBraking();
     }

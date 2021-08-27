@@ -8,9 +8,15 @@ public class GroundMaterialController : MonoBehaviour
     private WheelCollider wheelCollider;
     private GroundMaterial type;
 
+    private float forwStiffness;
+    private float sideStiffness;
+
     private void Start()
     {
         wheelCollider = this.GetComponent<WheelCollider>();
+
+        forwStiffness = wheelCollider.forwardFriction.stiffness;
+        sideStiffness = wheelCollider.sidewaysFriction.stiffness;
     }
 
     private void FixedUpdate()
@@ -26,14 +32,14 @@ public class GroundMaterialController : MonoBehaviour
         SetStiffness(wheelCollider, type.stiffness);
     }
 
-    private static void SetStiffness(WheelCollider wheelCollider, float stiffness)
+    private void SetStiffness(WheelCollider wheelCollider, float stiffness)
     {
         WheelFrictionCurve tempFriction = wheelCollider.forwardFriction;
-        tempFriction.stiffness = stiffness;
+        tempFriction.stiffness = stiffness * forwStiffness;
         wheelCollider.forwardFriction = tempFriction;
 
         tempFriction = wheelCollider.sidewaysFriction;
-        tempFriction.stiffness = stiffness;
+        tempFriction.stiffness = stiffness * sideStiffness;
         wheelCollider.sidewaysFriction = tempFriction;
     }
 }

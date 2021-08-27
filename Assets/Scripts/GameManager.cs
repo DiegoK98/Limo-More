@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource musicPlayer;
+
     [SerializeField] private Text textAsset;
 
     [SerializeField] private Slider holdRSlider;
@@ -59,8 +61,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameOver)
-            timeScaledecreasing = true;
+        musicPlayer.pitch = Mathf.Sqrt(Time.timeScale);
 
         if (timeScaledecreasing)
             Time.timeScale -= Time.deltaTime;
@@ -69,6 +70,9 @@ public class GameManager : MonoBehaviour
             return;
 
         if (Time.timeScale <= 0.1f)
+        {
+            musicPlayer.Stop();
+
             if (won)
             {
                 ShowText("[ESPACIO] PARA CONTINUAR", true);
@@ -83,9 +87,14 @@ public class GameManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                     ReloadLevel();
             }
+        }
 
         if (gameOver)
+        {
+            timeScaledecreasing = true;
+
             return;
+        }
 
         if (currentPoints >= coins.Count)
         {
